@@ -12,6 +12,7 @@ Features:
 5. the config file in this project support to grab data from drugs.com which include: Mayo Clinic and Harvard health.
 
 How the process works:
+
 Since I checked some website's articles, the structure is similar, there is one drugs/diseases list, the click the item can see the detail,
 so I use the two phrases for each website source, the drugs tasks are: "spider_medicine_list" and "spider_medicine_details", for the disease, 
 the tasks are "spider_disease_list" and "spider_disease_detail". By doing this we can schedule a spider job easily and we can grab a website's data in different process and support re-run, 
