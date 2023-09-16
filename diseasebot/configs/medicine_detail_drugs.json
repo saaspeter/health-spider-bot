@@ -1,0 +1,90 @@
+{
+  "spider": "universal",
+  "website": "https://www.drugs.com",
+  "task_type": "spider_medicine_details",
+  "job_id": "3",
+  "settings": {
+    "USER_AGENT": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.18"
+  },
+  "start_requests": {
+    "method": "get_detail_resource_start_url",
+    "args": [""]
+  },
+  "allowed_domains": [
+    "www.drugs.com"
+  ],
+  "rules": "dummy_detail_rule",
+  "item": {
+    "class": "MedicineItem",
+    "loader": "MedicineDiseaseItemLoader",
+    "attrs": {
+      "name": [
+        {
+          "method": "request.meta",
+          "key": "name"
+        }
+      ],
+      "name_temp": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='contentBox']/p[@class='drug-subtitle']"
+          ]
+        },
+        {
+          "after_load": "1",
+          "method": "extractNameTemp",
+          "args": [
+            "https://www.drugs.com"
+          ]
+        }
+      ],
+      "source_url": [
+        {
+          "method": "request.meta",
+          "key": "source_url"
+        }
+      ],
+      "site_url": [
+        {
+          "method": "request.meta",
+          "key": "site_url"
+        }
+      ],
+      "source_sitetag": [
+        {
+          "method": "request.meta",
+          "key": "source_sitetag"
+        }
+      ],
+      "language": [
+        {
+          "method": "request.meta",
+          "key": "language"
+        }
+      ],
+      "job_id": [
+        {
+          "method": "request.meta",
+          "key": "job_id"
+        }
+      ],
+      "full_article": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='contentBox']"
+          ]
+        }
+      ],
+      "response_status": [
+        {
+          "method": "attr",
+          "args": [
+            "status"
+          ]
+        }
+      ]
+    }
+  }
+}

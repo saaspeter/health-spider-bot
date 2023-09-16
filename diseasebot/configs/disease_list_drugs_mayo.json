@@ -1,0 +1,45 @@
+{
+  "spider": "universal",
+  "website": "https://www.drugs.com",
+  "task_type": "spider_disease_list",
+  "language": "en",
+  "settings": {
+    "USER_AGENT": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"
+  },
+  "start_urls": {
+    "type": "static",
+    "value": ["https://www.drugs.com/mcd/"]
+  },
+  "allowed_domains": [
+    "www.drugs.com"
+  ],
+  "rules": "disease_list_drugs_mayo",
+  "item": {
+    "class": "DiseaseListPageItem",
+    "loader": "ListPageLoader",
+    "attrs": {
+      "disease_list_page": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@id='content']/div[@class='contentBox']/ul/li/a"
+          ]
+        }
+      ],
+      "source_sitetag": [
+        {
+          "method": "value",
+          "args": ["MayoClinic"]
+        }
+      ],
+      "response_status": [
+        {
+          "method": "attr",
+          "args": [
+            "status"
+          ]
+        }
+      ]
+    }
+  }
+}

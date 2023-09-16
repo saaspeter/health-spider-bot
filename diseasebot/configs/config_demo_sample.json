@@ -1,0 +1,48 @@
+{
+  "spider": "universal",
+  "website": "https://www.drugs.com",
+  "task_type": "spider_medicine_list",
+  "job_id": "", // for detail task, designate job_id for scrawl detail items
+  "settings": {
+    "USER_AGENT": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"
+  },
+  "start_urls": {
+    "type": "dynamic",
+    "method": "medicine_list_drugs_start_url",
+    "args": []
+  },
+  "start_requests": {
+    "method": "medicine_list_drugs_start_requests",
+    "args": []
+  },
+  "allowed_domains": [
+    "www.drugs.com"
+  ],
+  "rules": "medicine_list_drugs",
+  "item": {
+    "class": "MedicineListPageItem",
+    "loader": "ListPageLoader",
+    "attrs": {
+      "medicine_list_page": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='contentBox']/ul[1]/li/a"
+          ]
+        }
+      ],
+      "source_sitetag": [
+        {
+          "method": "request.meta",
+          "key": "_custom_source_sitetag"
+        }
+      ],
+      "source_sitetag": [
+        {
+          "method": "value",
+          "args": ["HarvardHealth"]
+        }
+      ]
+    }
+  }
+}
